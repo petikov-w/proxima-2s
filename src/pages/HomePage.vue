@@ -9,13 +9,14 @@
         services(:services="serv" v-if="isEven(index)" style="margin-right: 57px" )
         services(:services="serv" v-if="!isEven(index)")
   .middle-col
-    .title Все виды технических газов
+    .box-title
+      .title Все виды технических газов
+      img(src="@/assets/images/arc_arrow.png")
     .box-gaz
       img(src="@/assets/images/baloon_gaz.png")
       .info-gaz
        .formula-gaz Ar
        .title-gaz Аргон
-  .right-col
 
 
 
@@ -44,10 +45,10 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: -70px;
-  margin-bottom: -100px;
+  //margin-bottom: -100px;
   .left-col {
-    max-width: 617px;
-    //max-width: 50vw;
+    //max-width: 617px;
+    max-width: 40vw;
     font-family: $font-RussoOne;
     font-weight: 400;
     text-align: left;
@@ -69,32 +70,51 @@ export default {
   }
 
   .middle-col {
-    max-width: 358px;
-    //max-width: 30vw;
+    //max-width: 558px;
+    max-width: 60vw;
     font-family: $font-RussoOne;
     font-weight: 400;
     margin-top: 15px;
-    margin-left: -100px;
+    //margin-left: -90px;
 
-    .title {
-      @include font(24px, 400, 29px, #ffffff);
+
+    .box-title {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: -120px;
+
+      .title {
+        //margin-left: -20px;
+        @include font(24px, 400, 29px, #ffffff);
+        //letter-spacing: 1.1px;
+        //text-align: left;
+      }
+      img {
+        position: absolute;
+        right: 155px;
+        margin-top: 5px;
+        //width: 52px;
+        //height: 65px;
+        //margin-left: 20px;
+      }
     }
-
     .box-gaz {
       display: flex;
-      margin-top: 40px;
+      margin-top: 50px;
       img {
-        text-align: left;
-        margin-left: -50px;
-        height: 696px;
-        width: 445px;
+        //text-align: left;
+        margin-left: -120px;
+        height: 650px;
+        width: 350px;
+        //height: 696px;
+        //width: 445px;
         object-fit: cover;
       }
-
       .info-gaz {
         display: flex;
         flex-direction: column;
-        margin-left: 25px;
+        margin-left: 35px;
+
         .formula-gaz {
           font-family: $font-RussoOne;
           @include font(24px, 400, 29px, #2194FF);
