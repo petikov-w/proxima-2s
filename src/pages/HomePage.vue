@@ -17,7 +17,8 @@
       .info-gaz
        .formula-gaz Ar
        .title-gaz Аргон
-
+       .formula-gaz(v-html="sdf")
+       .title-gaz Азот
 
 
 </template>
@@ -32,7 +33,8 @@ export default {
   setup() {
     const listServices = contentServices
     const isEven = number => number % 2 === 0 ? true : false
-    return {listServices, isEven}
+    const sdf = "<span>N<sub>2</sub></span>";
+    return {listServices, isEven, sdf}
   }
 }
 </script>
@@ -76,12 +78,17 @@ export default {
     font-weight: 400;
     margin-top: 15px;
     //margin-left: -90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
 
     .box-title {
       display: flex;
       justify-content: flex-start;
-      margin-left: -120px;
+      margin-left: 0;
+      position: relative;
+      max-width: 600px;
 
       .title {
         //margin-left: -20px;
@@ -91,7 +98,7 @@ export default {
       }
       img {
         position: absolute;
-        right: 155px;
+        right: -70px;
         margin-top: 5px;
         //width: 52px;
         //height: 65px;
@@ -101,24 +108,27 @@ export default {
     .box-gaz {
       display: flex;
       margin-top: 50px;
+
       img {
-        //text-align: left;
-        margin-left: -120px;
+        text-align: left;
+        margin-left: -30px;
         height: 650px;
         width: 350px;
         //height: 696px;
         //width: 445px;
         object-fit: cover;
+
       }
       .info-gaz {
         display: flex;
         flex-direction: column;
         margin-left: 35px;
 
+
         .formula-gaz {
           font-family: $font-RussoOne;
           @include font(24px, 400, 29px, #2194FF);
-          text-align: center;
+          text-align: left;
         }
 
         .title-gaz {
