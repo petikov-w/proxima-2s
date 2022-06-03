@@ -5,6 +5,7 @@ const routerHistory = createWebHistory();
 
 import HomePage from "@/pages/HomePage";
 import notFoundPage from "@/pages/NotFoundPage";
+import ThankYouPage from "@/pages/ThankYouPage";
 import {site} from "@/_config";
 
 const routers = createRouter(
@@ -17,6 +18,14 @@ const routers = createRouter(
                 component: HomePage,
                 meta: {
                     title: "Главная"
+                }
+            },
+            {
+                path: "/thankyou",
+                name: "thankyou",
+                component: ThankYouPage,
+                meta: {
+                    title: "Страница благодарности"
                 }
             },
             {

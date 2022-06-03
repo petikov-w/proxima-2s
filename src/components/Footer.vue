@@ -11,7 +11,6 @@ footer.footer
 export default {
   name: 'Footer-m',
   setup() {
-
     return { }
   }
 }
@@ -22,15 +21,19 @@ export default {
   width: 1100px;
   margin: 0 auto;
   display: flex;
-  margin-top: -80px;
+  margin-top: -80px; // <<------------------ мобил убрать
+  @media screen and (max-width: $phoneWidth) {
+    margin-top: -40px;
+    flex-direction: column;
+  }
   span {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19px;
-    color: #F1F1F1;
+    @include font(14px, 400, 19px, #f1f1f1);
     text-decoration: underline;
     margin-right: 30px;
+    @media screen and (max-width: $phoneWidth) {
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

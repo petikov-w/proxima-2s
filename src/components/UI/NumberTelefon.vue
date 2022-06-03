@@ -16,7 +16,7 @@ export default {
       if (temp_number[0] == '8') {
         pref = temp_number.substr(0, 1)
       }
-      console.log(temp_number);
+      // console.log(temp_number);
       if (temp_number[0] == '7') {
         pref = '+' + temp_number.substr(0, 1)
       }

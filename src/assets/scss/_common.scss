@@ -93,8 +93,8 @@ section,
 .wrapper-content {
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
-  margin-top: 80px; // if header is fixed do mt: headerHeight
+  //min-height: 70vh;
+  //margin-top: 80px; // if header is fixed do mt: headerHeight
 }
 
 .container {
@@ -116,6 +116,9 @@ section,
     max-width: $phoneWidth;
   }
   @media screen and (max-width: $phoneWidth) {
+    max-width: $phoneWidth;
+  }
+  @media screen and (max-width: $smPhoneWidth) {
     max-width: $smPhoneWidth;
   }
 }

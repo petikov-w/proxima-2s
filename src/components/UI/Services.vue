@@ -26,9 +26,12 @@ export default {
     margin-top: 50px;
     .descr {
       font-family: $font-OpenSans;
-      @include font(16px, 600, 22px, #ffffff)
+      @include font(16px, 600, 22px, #ffffff);
       margin-left: 10px;
       max-width: 189px;
+      @media screen and (max-width: $phoneWidth) {
+        width: 350px;
+      }
     }
     img {
       height: 50px;

@@ -34,6 +34,11 @@ export default {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: $phoneWidth) {
+      max-width: $smPhoneWidth;
+      flex-direction: column;
+      align-items: center;
+    }
     img, .m-top {
       margin-top: 25px;
     }
@@ -47,6 +52,9 @@ export default {
         @include font(16px, 600, 22px, #EF5221);
         margin-top: 5px;
         text-decoration: underline;
+        @media screen and (max-width: $phoneWidth) {
+         text-align: center;
+        }
       }
     }
   }
