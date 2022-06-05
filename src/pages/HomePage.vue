@@ -55,11 +55,13 @@ import Dialog from "@/components/UI/Dialog";
 import {contentServices} from "@/_config";
 import {ref} from "vue"
 import $router from "@/routes";
+import {default as axios} from "axios";
 
 export default {
   name: "HomePage",
   components: {Services, Dialog},
   setup() {
+    // const axios = require('axios').default;
     const listServices = contentServices
     const isEven = number => number % 2 === 0 ? true : false
     let in_name = ref("")
@@ -68,26 +70,45 @@ export default {
     const showDialog = () => {dialogVisible.value=true}
     const hiddenDialogCloseBtn = () => {dialogVisible.value=false;}
     const hiddenDialog = () => {dialogVisible.value=false;
-      // ==============================================================
-      const newPost = {
-        title: "my-my-my",
-        body: "bar",
-        userId: 1,
-      }
-      // const urls = "https://jsonplaceholder.typicode.com/posts"
-      fetch('http://localhost:8080/', {
-        method: "POST", // Здесь так же могут быть GET, PUT, DELETE
-        body: JSON.stringify(newPost), // Тело запроса в JSON-формате
-        headers: {
-          // Добавляем необходимые заголовки
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
-          })
+      // ===================== Fetch ====================================
+      // const newPost = {
+      //   title: "my-my-my",
+      //   body: "bar",
+      //   userId: 1,
+      // }
+      // // const urls = "https://jsonplaceholder.typicode.com/posts"
+      // fetch('http://localhost:8080/', {
+      //   method: "POST", // Здесь так же могут быть GET, PUT, DELETE
+      //   body: JSON.stringify(newPost), // Тело запроса в JSON-формате
+      //   headers: {
+      //     // Добавляем необходимые заголовки
+      //     "Content-type": "application/json; charset=UTF-8",
+      //   },
+      // })
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
+      //     })
+      // ===================== Axios ====================================
+      axios.post('@/mail.php', {
+        'Длина': 700,
+        'Ширина': 1000
+      });
+      // axios.post('mail.php', {
+      //   'Длина': 700,
+      //   'Ширина': 1000
+      // }).then(function (response) { alert('Благодарим за отправку обращения!')}).catch(function (error) {console.log(error);});
 
+      // axios.post('/user', {
+      //   firstName: 'Fred',
+      //   lastName: 'Flintstone'
+      // })
+      //     .then(function (response) {
+      //       console.log(response);
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
       // ==============================================================
                                 $router.push('/thankyou')}
     return {listServices,
