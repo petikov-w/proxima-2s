@@ -1,17 +1,5 @@
 <template lang="pug">
-mixin formula_1e(elm,number)
- div(class= "formula-gaz")= elm
-  span(class= "under")= number
-
-mixin formula_2e(elm1,number1,elm2,number2)
-  div(class= "formula-gaz")= elm1
-    if number1
-      span(class= "under")= number1
-    else
-      span(class= "under-n")= number1
-    span(class= "formula-gaz")= elm2
-    if number2
-      span(class= "under")= number2
+include ../assets/pug/mixins
 
 Dialog(v-model:show="dialogVisible")
   form(class="note-form" @submit.prevent="onSubmit")
@@ -26,14 +14,13 @@ Dialog(v-model:show="dialogVisible")
       required
       v-model="in_telefon"
       placeholder="Телефон")
-    //button(class="btn btn-primary btnm" type="submit") Отправить
     img(src="@/assets/images/btn_zakaz_gaz.png" @click="hiddenDialog")
 
 .wrapper-home
   .left-col
     .title Заправка баллонов техническим газом
-    .subtitle
-      p Бесплатная доставка по Москве <br> и Московской области
+    .subtitle Бесплатная доставка по Москве и Московской области
+      //p
     img(src="@/assets/images/btn_zakaz_gaz.png" @click="showDialog")
     .services-box
       div(v-for="(serv, index) in listServices" :key="index")
@@ -41,8 +28,8 @@ Dialog(v-model:show="dialogVisible")
         services(:services="serv" v-if="!isEven(index)")
   .middle-col
     .box-title
-      .title Все виды технических газов
-      img(src="@/assets/images/arc_arrow.png")
+      .title Все  виды технических газов
+      //img(src="@/assets/images/arc_arrow.png")
     .box-gaz
       img(src="@/assets/images/baloon_gaz.png")
       .info-gaz
@@ -60,12 +47,6 @@ Dialog(v-model:show="dialogVisible")
        .title-gaz Углекислота
        +formula_2e('Ar+ ','','CO','2')
        .title-gaz Сварочные смеси
-
-
-// - var s2 = "<span style='font-size: 16px; vertical-align: sub; margin: 0 3px;'>2</span>";
-// - var s2 = "<span class='under'>2</span>";
-//.formula-gaz CF!{s3}CFH!{s2}
-//.formula-gaz O!{s2}
 </template>
 
 <script>
@@ -83,14 +64,11 @@ export default {
     const isEven = number => number % 2 === 0 ? true : false
     let in_name = ref("")
     let in_telefon = ref("")
-    // let close = ref(false)
     const dialogVisible = ref(false)
     const showDialog = () => {dialogVisible.value=true}
     const hiddenDialogCloseBtn = () => {dialogVisible.value=false;}
     const hiddenDialog = () => {dialogVisible.value=false;
-                                $router.push('/thankyou')
-    }
-
+                                $router.push('/thankyou')}
     return {listServices,
             isEven,
             in_name,
@@ -99,7 +77,6 @@ export default {
             showDialog,
             hiddenDialog,
             hiddenDialogCloseBtn}
-
   }
 }
 </script>
@@ -116,6 +93,10 @@ export default {
   justify-content: space-between;
   //align-items: center;
   width: 380px;
+  @media screen and (max-width: $phoneWidth) {
+    width: 330px;
+  }
+
   //text-align: center;
   .form-title {
     font-family: $font-RussoOne;
@@ -149,7 +130,9 @@ export default {
     padding: 10px 10px;
     margin: 5px 17px 25px;
     color: #EF5221;
-
+    @media screen and (max-width: $phoneWidth) {
+      width: 330px;
+    }
   }
 }
 .under {
@@ -171,6 +154,7 @@ export default {
   @media screen and (max-width: $phoneWidth) {
    flex-direction: column;
     width: 380px;
+    align-items: center;
   }
   .left-col {
     //max-width: 617px;
@@ -179,6 +163,11 @@ export default {
     font-weight: 400;
     text-align: left;
     margin-top: 15px;
+    @media screen and (max-width: $phoneWidth) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .title {
       @include font(48px, 400, 58px, #EF5221);
       width: 500px;
@@ -186,25 +175,26 @@ export default {
         @include font(36px, 400, 44px, #EF5221);
         max-width: 360px;
         text-align: center;
-        margin-left: -10px;
+        margin-left: -30px;
       }
     }
     .subtitle {
       @include font(24px, 400, 29px, #ffffff);
       margin: 15px 0 27px;
-      p{
-        @media screen and (max-width: $phoneWidth) {
-          @include font(20px, 400, 24px, #ffffff);
-          max-width: 390px;
-          text-align: center;
-      }
+      max-width: 450px;
+      @media screen and (max-width: $phoneWidth) {
+        @include font(20px, 400, 24px, #ffffff);
+        width: 340px;
+        text-align: center;
+        margin-left: -40px;
       }
     }
     img {
       z-index: 1;
       @media screen and (max-width: $phoneWidth) {
         max-width: 190%;
-        margin-left: 20px;
+        //margin-left: 20px;
+        margin-left: -30px;
       }
     }
     img:hover {
@@ -231,7 +221,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     @media screen and (max-width: $phoneWidth) {
-      margin-left: 0;
+      margin-left: -70px;
     }
 
 

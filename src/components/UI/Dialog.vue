@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .dialog {
     top: 0;
     bottom: 0;

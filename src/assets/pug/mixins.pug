@@ -1,0 +1,13 @@
+mixin formula_1e(elm,number)
+    div(class= "formula-gaz")= elm
+        span(class= "under")= number
+
+mixin formula_2e(elm1,number1,elm2,number2)
+    div(class= "formula-gaz")= elm1
+        if number1
+            span(class= "under")= number1
+        else
+            span(class= "under-n")= number1
+        span(class= "formula-gaz")= elm2
+        if number2
+            span(class= "under")= number2

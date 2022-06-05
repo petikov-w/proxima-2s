@@ -53,7 +53,8 @@ export default {
         margin-top: 5px;
         text-decoration: underline;
         @media screen and (max-width: $phoneWidth) {
-         text-align: center;
+         //text-align: center;
+         display: none;
         }
       }
     }
