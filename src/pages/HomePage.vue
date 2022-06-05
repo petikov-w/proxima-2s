@@ -68,6 +68,27 @@ export default {
     const showDialog = () => {dialogVisible.value=true}
     const hiddenDialogCloseBtn = () => {dialogVisible.value=false;}
     const hiddenDialog = () => {dialogVisible.value=false;
+      // ==============================================================
+      const newPost = {
+        title: "my-my-my",
+        body: "bar",
+        userId: 1,
+      }
+      // const urls = "https://jsonplaceholder.typicode.com/posts"
+      fetch('http://localhost:8080/', {
+        method: "POST", // Здесь так же могут быть GET, PUT, DELETE
+        body: JSON.stringify(newPost), // Тело запроса в JSON-формате
+        headers: {
+          // Добавляем необходимые заголовки
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
+          })
+
+      // ==============================================================
                                 $router.push('/thankyou')}
     return {listServices,
             isEven,

@@ -11,7 +11,7 @@ export default {
   name: "uiServices",
   props: {
     services: {
-      type: Array,
+      type: Object,
       required: true,
       // default: []
     },
