@@ -2,19 +2,28 @@
 include ../assets/pug/mixins
 
 Dialog(v-model:show="dialogVisible")
-  form(class="note-form" @submit.prevent="onSubmit")
+  form(
+       class="note-form"
+       @submit.prevent="onSubmit")
     .header-title
       .form-title Получите расчет стоимости доставки
       .close-form(@click="hiddenDialogCloseBtn") &#10005
     input(
       required
+      name="name"
       v-model="in_name"
       placeholder="Имя")
     input(
       required
+      name="telefon"
       v-model="in_telefon"
       placeholder="Телефон")
-    img(src="@/assets/images/btn_zakaz_gaz.png" @click="hiddenDialog")
+    input(
+      type="image"
+      name="picture"
+      src="@/assets/images/btn_zakaz_gaz.png"
+      @click="hiddenDialog")
+    //img(src="@/assets/images/btn_zakaz_gaz.png" @click="hiddenDialog")
 
 .wrapper-home
   .left-col
@@ -90,27 +99,29 @@ export default {
       //       console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
       //     })
       // ===================== Axios ====================================
-      axios.post('@/mail.php', {
-        'Длина': 700,
-        'Ширина': 1000
-      });
+      // axios.post('http://test.kroxdev.ru/mail.php', {
+      //   'Длина': 700,
+      //   'Ширина': 1000
+      // });
       // axios.post('mail.php', {
       //   'Длина': 700,
       //   'Ширина': 1000
       // }).then(function (response) { alert('Благодарим за отправку обращения!')}).catch(function (error) {console.log(error);});
 
-      // axios.post('/user', {
-      //   firstName: 'Fred',
-      //   lastName: 'Flintstone'
-      // })
-      //     .then(function (response) {
-      //       console.log(response);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
+      var host = window.location.origin;
+
+      axios.post(host+"/src/mail.php", {
+        name: in_name.value,
+        telefon: in_telefon.value
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       // ==============================================================
-                                $router.push('/thankyou')}
+            $router.push('/thankyou')}
     return {listServices,
             isEven,
             in_name,
